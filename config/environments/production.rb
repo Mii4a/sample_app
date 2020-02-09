@@ -69,7 +69,7 @@ Rails.application.configure do
   host = 'https://cryptic-earth-22340.herokuapp.com/'
   config.action_mailer.default_url_options = {host: host}
   ActionMailer::Base.smtp_settings = {
-    :address       => 'stmp.sendgrid.net',
+    :address       => 'smtp.sendgrid.net',
     :port          => '587',
     :authetication => :plain,
     :user_name     => ENV['SENDGRID_PASSWORD'],
