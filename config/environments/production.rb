@@ -68,14 +68,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'https://cryptic-earth-22340.herokuapp.com'
   config.action_mailer.default_url_options = {host: host}
-  user_name = ENV['SENDGRID_USERNAME']
-  password = ENV['SENDGRID_PASSWORD']
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => user_name,
-    :password       => password,
+    :user_name      => 'sgczwbfo@kke.com',
+    :password       => 'syoutacancer123',
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
