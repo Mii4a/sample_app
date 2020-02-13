@@ -28,6 +28,3 @@
 
 # ignore uploaded test files
 /public/uploads
-
-# ignore assets
-/public/assets
