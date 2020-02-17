@@ -8924,7 +8924,54 @@ aside section h1 {
   margin-top: 15px;
 }
 
-/* line 146, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 143, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+}
+/* line 147, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.stats a {
+  float: left;
+  padding: 0 10px;
+  border-left: 1px solid #eeeeee;
+  color: gray;
+}
+/* line 152, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.stats a:first-child {
+  padding-left: 0;
+  border: 0;
+}
+/* line 156, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.stats a:hover {
+  text-decoration: none;
+  color: blue;
+}
+/* line 161, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.stats strong {
+  display: block;
+}
+
+/* line 166, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+}
+/* line 169, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.user_avatars .gravatar {
+  margin: 1px 1px;
+}
+/* line 172, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.user_avatars a {
+  padding: 0;
+}
+
+/* line 177, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+.users.follow {
+  padding: 0;
+}
+
+/* line 183, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
@@ -8934,99 +8981,99 @@ input, textarea, select, .uneditable-input {
   box-sizing: border-box;
 }
 
-/* line 153, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 190, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 input {
   height: auto !important;
 }
 
-/* line 157, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 194, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 #error_explanation {
   color: red;
 }
-/* line 159, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 196, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 #error_explanation ul {
   color: red;
   margin: 0 0 30px 0;
 }
 
-/* line 167, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 204, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .field_with_errors .form-control {
   color: #a94442;
 }
 
-/* line 172, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 209, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .checkbox {
   margin-top: -10px;
   margin-bottom: 10px;
 }
-/* line 175, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 212, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .checkbox span {
   margin-left: 20px;
   font-weight: normal;
 }
 
-/* line 181, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 218, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 #session_remember_me {
   width: auto;
   margin-left: 0;
 }
 
-/* line 188, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 225, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .users {
   list-style: none;
   margin: 0;
 }
-/* line 191, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 228, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .users li {
   overflow: auto;
   padding: 10px 0;
   border-bottom: 1px solid #eeeeee;
 }
 
-/* line 200, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 237, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .microposts {
   list-style: none;
   padding: 0;
 }
-/* line 203, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 240, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .microposts li {
   padding: 10px 0;
   border-top: 1px solid #e8e8e8;
 }
-/* line 207, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 244, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .microposts .user {
   margin-top: 5em;
   padding-top: 0;
 }
-/* line 211, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 248, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .microposts .content {
   color: #777777;
   display: block;
   margin-left: 60px;
 }
-/* line 216, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 253, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .microposts .gravatar {
   float: left;
   margin-right: 10px;
   margin-top: 5px;
 }
 
-/* line 224, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 261, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 aside textarea {
   height: 100px;
   margin-bottom: 5px;
 }
 
-/* line 230, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 267, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 span.picture {
   margin-top: 10px;
 }
-/* line 232, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 269, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 span.picture input {
   border: 0;
 }
 
-/* line 239, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
+/* line 276, /home/ec2-user/environment/sample_app/app/assets/stylesheets/custom.scss */
 .debug_dump {
   clear: both;
   float: left;
