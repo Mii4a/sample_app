@@ -7,7 +7,8 @@ class UserTest < ActiveSupport::TestCase
   
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+                     password: "foobar", password_confirmation: "foobar",
+                     unique_name: "example_user")
   end
   
   test "should be valid" do
@@ -74,6 +75,26 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  test "unique name should be presence" do
+    @user.unique_name = "   "
+    @user.save
+    assert_not @user.valid?
+  end
+  
+  test "unique name should be unique" do
+    duplicate_user = @user.dup
+    duplicate_user.unique_name = @user.unique_name.upcase
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+  
+  test "unique name should be in 3 to 15 characters" do
+    unique_name = "a" * 16
+    @user.unique_name = unique_name
+    @user.save
+    assert_not @user.valid?
+  end
+  
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?(:remember,'')
   end
@@ -86,7 +107,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
-  test "should followe and unfollow a user" do
+  test "should follow and unfollow a user" do
     michael = users(:michael)
     archer = users(:archer)
     assert_not michael.following?(archer)
