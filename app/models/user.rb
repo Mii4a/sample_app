@@ -21,8 +21,7 @@ class User < ApplicationRecord
     validates :password, presence: true, length: {minimum: 6}, allow_nil: true
     VALID_UNIQUE_NAME_REGAX = /\A[a-z0-9_]+\z/i
     validates :unique_name, presence: true, length: { in: 3..15 }, 
-                            format: { with: VALID_UNIQUE_NAME_REGAX },
-                            uniqueness: {case_sensitive: false }
+                            format: { with: VALID_UNIQUE_NAME_REGAX }
         
     class << self
         
