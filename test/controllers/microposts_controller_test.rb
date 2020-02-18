@@ -31,4 +31,14 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_url
   end
+  
+  test "should require unique name when reply" do
+    user = users(:michael)
+    other_user = users(:archer)
+    log_in_as(user)
+    unique_name = other_user.unique_name
+    content = "@#{unique_name} reply"
+    post microposts_path, params: { micropost: { content: content } }
+    assert_equal other_user.id, user.microposts.first.in_reply_to
+  end
 end

@@ -40,4 +40,35 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     get user_path(users(:archer))
     assert_select 'a', text: "delete", count: 0
   end
+  
+  test "should include current user, follower, reply user in feed" do
+    from_user = users(:michael)  #followed lana and malory
+    to_user   = users(:archer)   #followed michael
+    other_user1 = users(:lana)   #followed michael
+    other_user2 = users(:malory) #no following
+    unique_name = to_user.unique_name
+    content = "@#{unique_name} reply"
+    # include reply when from_user
+    log_in_as(from_user)
+    get root_url
+    assert_difference 'Micropost.count', 1 do
+      post microposts_path, params: { micropost: { content: content } }
+    end
+    micropost_id = from_user.microposts.first.id
+    get root_url
+    assert_select "#micropost-#{micropost_id} span.content", text: content
+    # include reply when to_user
+    log_in_as(to_user)
+    get root_path
+    assert_select "#micropost-#{micropost_id} span.content", text: content
+    # include reply when from_user's follower
+    log_in_as(other_user1)
+    get root_path
+    assert_select "#micropost-#{micropost_id} span.content", text: content
+    # not include reply when a user don't follow from_user
+    log_in_as(other_user2)
+    get root_path
+    assert_select "#micropost-#{micropost_id} span.content", text: content, count: 0
+  end
+  
 end

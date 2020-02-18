@@ -10,6 +10,7 @@ class User < ApplicationRecord
     has_many :followers, through: :passive_relationships, source: :follower
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
+    before_save :downcase_unique_name
     before_create :create_activation_digest
     validates :name,  presence: true, length: {maximum: 50}
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -20,7 +21,8 @@ class User < ApplicationRecord
     validates :password, presence: true, length: {minimum: 6}, allow_nil: true
     VALID_UNIQUE_NAME_REGAX = /\A[a-z0-9_]+\z/i
     validates :unique_name, presence: true, length: { in: 3..15 }, 
-                            format: { with: VALID_UNIQUE_NAME_REGAX }
+                            format: { with: VALID_UNIQUE_NAME_REGAX },
+                            uniqueness: {case_sensitive: false }
         
     class << self
         
@@ -75,10 +77,15 @@ class User < ApplicationRecord
     end
     
     def feed
-        following_ids = "SELECT followed_id FROM Relationships
-                         WHERE follower_id = :user_id"
-        Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id",
-                         user_id: id)
+        # following_ids = "SELECT followed_id FROM Relationships
+        #                  WHERE follower_id = :user_id"
+        # Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id",
+        #                  user_id: id)
+        Micropost.where("user_id     IN (:following_ids)
+                         OR user_id      =  :user_id
+                         OR in_reply_to  =  :user_id",
+                         following_ids: User.find(id).following_ids,
+                         user_id: id )
     end
     
     # follow a user
@@ -100,6 +107,10 @@ class User < ApplicationRecord
     
     def downcase_email
         email.downcase!
+    end
+    
+    def downcase_unique_name
+        unique_name.downcase!
     end
     
     def create_activation_digest

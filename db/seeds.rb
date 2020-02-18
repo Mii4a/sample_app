@@ -14,7 +14,7 @@ User.create!(name:  "Example User",
              admin: true,
              activated: true,
              activated_at: Time.zone.now,
-             unique_name: "example_1")
+             unique_name: "example_user")
              
 99.times do |n|
     name = Faker::Name.name
